@@ -138,16 +138,13 @@ Memory Controller Broadcast register behavior is to write to all channels and re
 						from training mode to Normal mode.
 	_____________________________________________________________________________________________
 
-### YET TO DO in The Future
+### Left TO DO in The Future
 
-Since owner of this repo does not own Core 8, 9 or 10 platforms, the first step is to upgrade Core 4 files:
+Since owner of this repo does not own Core 8, 9 or 10 platforms, the next step is to upgrade Core 4 file:
 
 	c2xx_memory_status.c
-	ecc_check.c
 
-To be Core 8, 9 and 10 compliant, according to the well outlined documentation in README and .pdf document
+To be Core 8, 9, 10 compliant, according to the well outlined documentation in README and .pdf document
 in the current directory.
 
 Then to check if it does work (estimated amount of work 1 to 2 hours for the code solely).
-
-Owner also should (The Time will be scheduled in The Future) port both examples to Core 10 (Ice Lake).

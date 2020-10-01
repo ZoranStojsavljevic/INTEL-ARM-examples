@@ -1,22 +1,19 @@
 /*
- * Net pointer to: https://hardforum.com/threads/ecc-check-on-intel-i3-processors.1693051/
  * Must be run as root.
  * It outputs something like this:
  *
- * 5004-5007h: 20 0 62 0 <<== Please, do note Little Endian order
- * 5008-500Bh: 10 0 62 0 <<== Please, do note Little Endian order
+ * 5004-5007h: 20 0 0 0 <<== Please, do note Little Endian order
+ * 5008-500Bh: 10 0 0 0 <<== Please, do note Little Endian order
  *
- * The interesting part is the first byte (from the right).
- * In the case of i5-4300U the 0 means that ECC is not enabled,
- ^ and this is normal/ecc not implemented.
+ * The interesting part is the second byte (from the left).
  *
- * According to Intel's 4th-gen-core datasheet:
- * 0: ECC disabled.
- * 1: ECC is active in I/O; ECC logic is not active.
- * 2: ECC is disabled in I/O, but ECC logic is enabled.
- * 3: ECC active in both I/O and ECC logic.
+ * According to Intel's 10th-gen-core datasheet:
+ * 00h or 01h: ECC disabled.
+ * 10h or 11h: ECC is active in I/O; ECC logic is not active.
+ * 20h or 21h: ECC is disabled in I/O, but ECC logic is enabled.
+ * 30h or 31h: ECC active in both I/O and ECC logic.
  *
- * Does comply to Core 4 silicons (does not to Core 8, 9 and 10)
+ * Does comply to Core 8, 9, 10 silicons (does NOT run on Core 4)
  */
 
 #include <stdio.h>
@@ -30,16 +27,16 @@
 #define MCHBAR		0xFED10000
 
 /*
- * MCHBAR—Host Memory Mapped Register Range Base - Offset 48h
+ * MCHBAR Base Address Register (MCHBAR_0_0_0_PCI) - Offset 48h
  *
- * 38:15 000000h - RW MCHBAR:
- *		      This field corresponds to bits 38 to 15 of the
+ * 38:16 000000h - RW MCHBAR:
+ *		      This field corresponds to bits 38 to 16 of the
  *		      base address Host Memory Mapped configuration
  *		      space. BIOS will program this register resulting
- *		      in a base address for a 32KB block of contiguous
+ *		      in a base address for a 64KB block of contiguous
  *		      memory address space.
  */
-#define FILESIZE	32*1024
+#define FILESIZE	64*1024 /* Because of a 64KB mapping, impossible to run on Core 4 */
 
 int main(int argc, char *argv[]) {
 	int i;

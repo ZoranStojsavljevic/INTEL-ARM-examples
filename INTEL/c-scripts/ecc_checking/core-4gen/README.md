@@ -8,9 +8,9 @@ directory:
 
 Both are standalone (compiled/linked with gcc *.c).
 
-Author strongly encourages readers to re-write these C examples for Cores 8, 9, 10, with
-assistance of the 10th Generation Intel® Processor Families Datasheet, Volume 2, included
-in this directory.
+Author strongly encourages readers to re-write c2xx_memory_status.c C example for Cores
+8, 9, 10, with assistance of the 10th Generation Intel® Processor Families Datasheet,
+Volume 2, included in the ../core-10gen/ .
 
 ### Author's remarks
 
@@ -20,11 +20,6 @@ The 4th Generation Intel® Mobile Processor, Volume 2 is included for much bette
 understanding of MCHBAR description. The net link is provided as well:
 
 https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/4th-gen-core-family-mobile-u-y-processor-lines-vol-2-datasheet.pdf
-
-The 10th Generation Intel® Processor Families Datasheet, Volume 2 is included for much better
-understanding of MCHBAR changes (just in case). The net link is provided as well:
-
-https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/10th-gen-core-families-datasheet-vol-2-datasheet.pdf
 
 ### Some problems found in Linux kernel code while programming MCHBAR
 https://lkml.org/lkml/2019/8/9/580
