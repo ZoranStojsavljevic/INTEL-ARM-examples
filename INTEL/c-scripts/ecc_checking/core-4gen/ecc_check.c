@@ -16,7 +16,7 @@
  * 2: ECC is disabled in I/O, but ECC logic is enabled.
  * 3: ECC active in both I/O and ECC logic.
  *
- * Does comply to Core 4 silicons (does not to Core 8, 9 and 10)
+ * Does comply with Core 4 and 5 silicons
  */
 
 #include <stdio.h>
@@ -33,11 +33,11 @@
  * MCHBAR—Host Memory Mapped Register Range Base - Offset 48h
  *
  * 38:15 000000h - RW MCHBAR:
- *		      This field corresponds to bits 38 to 15 of the
- *		      base address Host Memory Mapped configuration
- *		      space. BIOS will program this register resulting
- *		      in a base address for a 32KB block of contiguous
- *		      memory address space.
+ *			This field corresponds to bits 38 to 15 of the
+ *			base address Host Memory Mapped configuration
+ *			space. BIOS will program this register resulting
+ *			in a base address for a 32KB block of contiguous
+ *			memory address space.
  */
 #define FILESIZE	32*1024
 

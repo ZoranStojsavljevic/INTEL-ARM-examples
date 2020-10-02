@@ -3,7 +3,7 @@
  * Net pointer to: https://davidschaper.nl/downloads/c2xx_memory_status.c
  * Must be run as root.
  *
- * Does comply to Core 4 silicons (does not to Core 8, 9 and 10)
+ * Does apply up to Core 5 silicons (does not to Core 6, 7, 8, 9 and 10)
  */
 
 #include <stdio.h>

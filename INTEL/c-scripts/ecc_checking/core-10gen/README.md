@@ -1,11 +1,16 @@
-## INTEL MCHBAR Core 10 (Ice Lake)
+## INTEL MCHBAR Core 6, 7, 8, 9 and 10
 
 ### Author's remarks
 
-The 10th Generation Intel® Processor FamiliesDatasheet, Volume 2 of 2 manual is	included for
+The 10th Generation Intel® Processor Families Datasheet, Volume 2 of 2 manual is included for
 much better understanding of these files (just in case). The net link is provided as well:
 
 https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/10th-gen-core-families-datasheet-vol-2-datasheet.pdf
+
+Some changes for MCHBAR registers were introduced in the 6th Generation Intel® Processor Families
+6th Generation Intel® Processor Datasheet for U/Y-Platforms:
+
+https://www.mouser.mx/pdfdocs/6th-gen-core-family-mobile-u-y-processor-lines-datasheet-vol-2.pdf
 
 ### Some problems found in Linux kernel code while programming MCHBAR
 https://lkml.org/lkml/2019/8/9/580
@@ -13,18 +18,18 @@ https://lkml.org/lkml/2019/8/9/580
 Resource sanity check: requesting [mem 0xfed10000-0xfed1ffff], which spans more than reserved
 [mem 0xfed10000-0xfed17fff] caller dnv_rd_reg+0xc8/0x240 [pnd2_edac] mapping multiple BARs.
 
-Not all of the mmio regions used in dnv_rd_reg() are the same size.  The MCHBAR window is 32KB
+Not all of the mmio regions used in dnv_rd_reg() are the same size. The MCHBAR window is 32KB
 and the sideband ports are 64KB. Pass the correct size to ioremap() depending on which resource
 it is read from.
 
-	NOTE from Author: From at least Gen. 8 (9, 10) the minimum assigned MCHBAR mapped space
-	is 64KB, NOT 32KB anymore!
+	NOTE from Author: For Gen. 4 - 9 the minimum assigned MCHBAR space is 32KB
+	From Gen. 10 the minimum assigned MCHBAR space is 64KB, NOT 32KB anymore!
 
 ### INTEL Core 10 (Ice Lake) MCHBAR documentation (10th-gen-core-families-datasheet-vol-2-datasheet.pdf)
 
 #### 3.1 Host Bridge/DRAM Registers (D0:F0) (page 36)
 
-This chapter documents the registers in Bus 0, Device 0, Function 0.
+This chapter documents the registers for the Bus 0, Device 0, Function 0.
 
 	NOTE: These registers apply to all processors of the same family
 
@@ -140,11 +145,10 @@ Memory Controller Broadcast register behavior is to write to all channels and re
 
 ### Left TO DO in The Future
 
-Since owner of this repo does not own Core 8, 9 or 10 platforms, the next step is to upgrade Core 4 file:
+Since owner of this repo does not own Cores 6, 7, 8, 9 or 10 Core platforms, the next step is to
+upgrade Cores 4, 5 file c2xx_memory_status.c to be compliant with cited above.
 
-	c2xx_memory_status.c
-
-To be Core 8, 9, 10 compliant, according to the well outlined documentation in README and .pdf document
-in the current directory.
+To be Cores 6, 7, 8, 9, 10 compliant, according to the well outlined documentation in README and
+.pdf documents in the current directory.
 
 Then to check if it does work (estimated amount of work 1 to 2 hours for the code solely).

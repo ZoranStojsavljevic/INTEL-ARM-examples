@@ -9,17 +9,17 @@ directory:
 Both are standalone (compiled/linked with gcc *.c).
 
 Author strongly encourages readers to re-write c2xx_memory_status.c C example for Cores
-8, 9, 10, with assistance of the 10th Generation Intel® Processor Families Datasheet,
+6, 7, 8, 9, 10, with assistance of the 10th Generation Intel® Processor Families Datasheet,
 Volume 2, included in the ../core-10gen/ .
 
 ### Author's remarks
-
-MCHBAR HW registers' definitions do change from Core 4 (Haswell) to Cores 8, 9, 10.
 
 The 4th Generation Intel® Mobile Processor, Volume 2 is included for much better
 understanding of MCHBAR description. The net link is provided as well:
 
 https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/4th-gen-core-family-mobile-u-y-processor-lines-vol-2-datasheet.pdf
+
+MCHBAR HW registers' definitions did change from Core 6 (Sky Lake).
 
 ### Some problems found in Linux kernel code while programming MCHBAR
 https://lkml.org/lkml/2019/8/9/580
@@ -31,16 +31,13 @@ Not all of the mmio regions used in dnv_rd_reg() are the same size.  The MCHBAR 
 and the sideband ports are 64KB. Pass the correct size to ioremap() depending on which resource
 it is read from.
 
-	NOTE from Author: From at least Gen. 8 (9, 10) the minimum assigned MCHBAR mapped space
-	is 64KB, NOT 32KB anymore!
-
 ### Mobile 4th Generation Intel "Core" Processor Family, Mobile Intel "Pentium/Celeron" Processor Family
 
 #### 3.0 Host Device Configuration RegistersHost Bridge/DRAM (0/0/0/CFG) Registers Summary (page 41)
 
 #### 3.1 Host Bridge/DRAM (0/0/0/CFG) Registers Summary (page 41)
 
-This chapter documents the registers in Bus 0, Device 0, Function 0.
+This chapter documents the registers for the Bus 0, Device 0, Function 0.
 
 	NOTE: These registers apply to all processors of the same family
 

@@ -1,12 +1,13 @@
 ### INTELTOOL to up to Core 10 INTEL CPUs
 
-Provides information about the Intel CPU/chipset hardware configuration.
+Provides information about the Intel CPU/chipset hardware configuration (register contents,
+MSRs, etc).
 
 This tool is developed using coreboot inteltool directory:
 
 https://github.com/coreboot/coreboot/tree/master/util/inteltool
 
-And older release of jimmysitu/inteltool:
+And using older release of jimmysitu/inteltool:
 
 https://github.com/jimmysitu/inteltool
 
