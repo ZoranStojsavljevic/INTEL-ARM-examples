@@ -11,7 +11,6 @@ Author encourages everybody to read these examples and post some interesting one
 own, or point to them to me (via issues) as well, even to expose some of them using the
 upstream git pull requests to this repo.
 
-This repo is supposed to be a live repo from now on...
+Includes the following packages:
 
-Thank you for understanding,
-Zoran
+INTELTOOL - Provides information about the Intel CPU/chipset hardware configuration.
