@@ -13,4 +13,9 @@ upstream git pull requests to this repo.
 
 Includes the following packages:
 
-INTELTOOL - Provides information about the Intel CPU/chipset hardware configuration.
+INTEL/			INTELTOOL - Provides information about the Intel CPU/chipset hardware
+			configuration.
+
+ARM/armv7-cortex-A/	MDEVX - simple command-line C tool used to read/write to hardware
+			locations in a 32 bit armv7 A5, A8, A9, A12, A15 MMU based silicons.
+			It is a standalone tool.
