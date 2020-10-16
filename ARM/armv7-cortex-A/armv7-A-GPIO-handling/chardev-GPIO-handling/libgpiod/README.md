@@ -43,14 +43,18 @@ Here are the net pointers from which to clone libgpiod repositories:
 	0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
 
 #### Examples (need to be adopted for the actual platform GPIO configuration)
-https://github.com/starnight/libgpiod-example
 
-Here, the all examples are aplicable for Beagle Bone Black (BBB)
+The following examples are applicable for Beagle Bone Black (BBB):
+
+	libgpio-state.c
+	libgpio-event.c
+	libgpio-lsgpio.c (with appropriate local libgpio-lsgpio.h)
 
 #### Compilation/Linkage (on target platform - BBB with Debian Buster installed)
 
-	$ gcc -lgpiod libgpio-state.c -o libgpio-state
-	$ gcc -lgpiod libgpio-event.c -o libgpio-event
+	$ gcc -lgpiod libgpio-state.c  -o libgpio-state
+	$ gcc -lgpiod libgpio-event.c  -o libgpio-event
+	$ gcc -lgpiod libgpio-lsgpio.c -o libgpio-lsgpio
 
 #### Useful CLI libgpiod commands
 

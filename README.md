@@ -14,7 +14,7 @@ Author encourages everybody to read these examples and post some interesting one
 their own, or point to them to me (via issues) as well, even to expose some of them
 using the upstream git pull requests to this repo.
 
-Includes the following tools/packages:
+Among others, Includes the following tools/packages:
 
 INTEL/
 
@@ -23,6 +23,11 @@ INTEL/
 
 ARM/armv7-cortex-A/
 
-	MDEVX - simple command-line C tool used to read/write to hardware
+	MDEVX - Simple command-line C tool used to read/write to hardware
 	locations in a 32 bit armv7 A5, A8, A9, A12, A15 MMU based silicons.
 	It is a standalone tool.
+
+ARM/armv7-cortex-A/
+
+	armv7-A-GPIO-handling/ - Legacy and libgpiod armv7-A GPIO handling
+	documentation with appropriate presented C examples.
