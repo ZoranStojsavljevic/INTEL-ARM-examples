@@ -1,0 +1,106 @@
+Initial picture:
+Initial state						sudo rmmod mikrobus_id					sudo rmmod mikrobus					sudo rmmod w1_gpio
+
+mikrobus_id	16384  0
+mikrobus	24576  1 mikrobus_id			mikrobus	24576  0
+w1_gpio		16384  0				w1_gpio		16384  0				w1_gpio		16384  0
+wire		32768  3 mikrobus_id,w1_gpio,mikrobus	wire		32768  2 w1_gpio,mikrobus		wire		32768  1 w1_gpio			wire		32768  0
+
+-------
+
+debian@arm:/sys$ find . -name w1*			debian@arm:/sys$ find . -name w1*			debian@arm:/sys$ find . -name w1*			debian@arm:/sys$ find . -name w1*
+
+./devices/platform/w1-gpio.0				./devices/platform/w1-gpio.0
+./devices/w1_bus_master1				./devices/w1_bus_master1
+./devices/w1_bus_master1/w1_master_max_slave_count	./devices/w1_bus_master1/w1_master_max_slave_count
+./devices/w1_bus_master1/w1_master_pointer		./devices/w1_bus_master1/w1_master_pointer
+./devices/w1_bus_master1/w1_master_timeout		./devices/w1_bus_master1/w1_master_timeout
+./devices/w1_bus_master1/w1_master_remove		./devices/w1_bus_master1/w1_master_remove
+./devices/w1_bus_master1/w1_master_timeout_us		./devices/w1_bus_master1/w1_master_timeout_us
+./devices/w1_bus_master1/w1_master_attempts		./devices/w1_bus_master1/w1_master_attempts
+./devices/w1_bus_master1/w1_master_add			./devices/w1_bus_master1/w1_master_add
+./devices/w1_bus_master1/w1_master_pullup		./devices/w1_bus_master1/w1_master_pullup
+./devices/w1_bus_master1/w1_master_slaves		./devices/w1_bus_master1/w1_master_slaves
+./devices/w1_bus_master1/w1_master_name			./devices/w1_bus_master1/w1_master_name
+./devices/w1_bus_master1/w1_master_search		./devices/w1_bus_master1/w1_master_search
+./devices/w1_bus_master1/w1_master_slave_count		./devices/w1_bus_master1/w1_master_slave_count
+./bus/platform/devices/w1-gpio.0			./bus/platform/devices/w1-gpio.0
+./bus/platform/drivers/w1-gpio				./bus/platform/drivers/w1-gpio				./bus/platform/drivers/w1-gpio
+./bus/platform/drivers/w1-gpio/w1-gpio.0		./bus/platform/drivers/w1-gpio/w1-gpio.0
+./bus/w1						./bus/w1						./bus/w1						./bus/w1
+./bus/w1/devices/w1_bus_master1				./bus/w1/devices/w1_bus_master1
+./bus/w1/drivers/w1_slave_driver			./bus/w1/drivers/w1_slave_driver			./bus/w1/drivers/w1_slave_driver			./bus/w1/drivers/w1_slave_driver
+./bus/w1/drivers/w1_master_driver			./bus/w1/drivers/w1_master_driver			./bus/w1/drivers/w1_master_driver			./bus/w1/drivers/w1_master_driver
+./bus/w1/drivers/w1_master_driver/w1_bus_master1	./bus/w1/drivers/w1_master_driver/w1_bus_master1
+./module/w1_gpio					./module/w1_gpio					./module/w1_gpio
+./module/wire/holders/w1_gpio				./module/wire/holders/w1_gpio				./module/wire/holders/w1_gpio
+
+-------
+
+debian@arm:/sys$ find . -name mikrobus*			debian@arm:/sys$ find . -name mikrobus*			debian@arm:/sys$ find . -name mikrobus*
+
+./devices/platform/mikrobus-test			./devices/platform/mikrobus-test			./devices/platform/mikrobus-test			./devices/platform/mikrobus-test
+./devices/platform/mikrobus-0				./devices/platform/mikrobus-0				./devices/platform/mikrobus-0				./devices/platform/mikrobus-0
+./devices/platform/mikrobus-0/mikrobus-0		./devices/platform/mikrobus-0/mikrobus-0
+./class/mikrobus-port					./class/mikrobus-port
+./class/mikrobus-port/mikrobus-0			./class/mikrobus-port/mikrobus-0
+./firmware/devicetree/base/aliases/mikrobus0		./firmware/devicetree/base/aliases/mikrobus0		./firmware/devicetree/base/aliases/mikrobus0		./firmware/devicetree/base/aliases/mikrobus0
+./firmware/devicetree/base/mikrobus-test		./firmware/devicetree/base/mikrobus-test		./firmware/devicetree/base/mikrobus-test		./firmware/devicetree/base/mikrobus-test
+./firmware/devicetree/base/mikrobus-0			./firmware/devicetree/base/mikrobus-0			./firmware/devicetree/base/mikrobus-0			./firmware/devicetree/base/mikrobus-0
+./firmware/devicetree/base/mikrobus-0/mikrobus-gpios	./firmware/devicetree/base/mikrobus-0/mikrobus-gpios	./firmware/devicetree/base/mikrobus-0/mikrobus-gpios	./firmware/devicetree/base/mikrobus-0/mikrobus-gpios
+./bus/platform/devices/mikrobus-test			./bus/platform/devices/mikrobus-test			./bus/platform/devices/mikrobus-test			./bus/platform/devices/mikrobus-test
+./bus/platform/devices/mikrobus-0			./bus/platform/devices/mikrobus-0			./bus/platform/devices/mikrobus-0			./bus/platform/devices/mikrobus-0
+./bus/platform/drivers/mikrobus				./bus/platform/drivers/mikrobus
+./bus/platform/drivers/mikrobus/mikrobus-0		./bus/platform/drivers/mikrobus/mikrobus-0
+./bus/mikrobus						./bus/mikrobus
+./bus/mikrobus/devices/mikrobus-0			./bus/mikrobus/devices/mikrobus-0
+./module/mikrobus_id
+./module/wire/holders/mikrobus_id
+./module/wire/holders/mikrobus				./module/wire/holders/mikrobus
+./module/mikrobus					./module/mikrobus
+./module/mikrobus/holders/mikrobus_id
+
+_______
+
+debian@arm:/sys$ sudo rmmod wire
+[sudo] password for debian: 
+debian@arm:/sys$ 
+debian@arm:/sys$ 
+debian@arm:/sys$ lsmod
+Module                  Size  Used by
+8021q                  24576  0
+garp                   16384  1 8021q
+stp                    16384  1 garp
+mrp                    16384  1 8021q
+llc                    16384  2 garp,stp
+spidev                 20480  0
+evdev                  20480  1
+usb_f_acm              20480  2
+u_serial               24576  3 usb_f_acm
+usb_f_ncm              24576  2
+usb_f_rndis            24576  4
+u_ether                24576  2 usb_f_ncm,usb_f_rndis
+libcomposite           49152  16 usb_f_acm,usb_f_ncm,usb_f_rndis
+iptable_nat            16384  0
+nf_nat                 28672  1 iptable_nat
+nf_conntrack           98304  1 nf_nat
+nf_defrag_ipv6         20480  1 nf_conntrack
+nf_defrag_ipv4         16384  1 nf_conntrack
+iptable_mangle         16384  0
+iptable_filter         16384  0
+ip_tables              24576  3 iptable_mangle,iptable_filter,iptable_nat
+x_tables               24576  3 iptable_mangle,ip_tables,iptable_filter
+
+debian@arm:/sys$ find . -name w1*
+
+debian@arm:/sys$ find . -name mikrobus*
+./devices/platform/mikrobus-test
+./devices/platform/mikrobus-0
+./firmware/devicetree/base/aliases/mikrobus0
+./firmware/devicetree/base/mikrobus-test
+./firmware/devicetree/base/mikrobus-0
+./firmware/devicetree/base/mikrobus-0/mikrobus-gpios
+./bus/platform/devices/mikrobus-test
+./bus/platform/devices/mikrobus-0
+debian@arm:/sys$ 
+_______
