@@ -1,0 +1,10 @@
+# Compile
+
+gcc -Wall -Wpedantic -Wextra -o cap_test cap_test.c -lcap
+# setcap has to re-run every time the executable file was re-created
+# (e.g. by the GCC compiler during recompilation).
+sudo /usr/sbin/setcap "cap_setgid,cap_setuid=eip" ./cap_test
+./cap_test
+
+The commentaries about this examle are disabled (on purpose). This is just a
+proof of concept which readers should find out digging deep by themselves.
