@@ -69,30 +69,29 @@ Flags
 	Weirdness
 PROT_NONE
 	Disable all access to the memory. Basically requesting a page fault when accessed.  Used by debug tools like "electric fence" to find memory access errors.
-	!
+
 PROT_READ
 	Read only area.  Useful for input files, or big read-only tables.
-	no
+
 PROT_WRITE
 	Write only area.  Can't be read, though.  Secure shared drop box?
-	!!
+
 PROT_EXEC
 	Execute only area.  Secure code?
-	!!
+
 PROT_READ+PROT_WRITE
 	Read-write access.  Most ordinary memory from "new" is allocated like this.  You can't execute code here, as a security feature.
-	no
+
 PROT_READ+PROT_EXEC
 	Readable (for constants) and executable (for code).
 	Most programs are mapped this way.
-	no
+
 PROT_WRITE+PROT_EXEC
 	Write and execute, but not read? Maybe for a dynamically generated program, plus security?
-	!!!
+
 PROT_READ+PROT_WRITE+PROT_EXEC
 	Allow all access: do what thou wilt.
 	Once used for everything.  Good for dynamically created code.
-	!
 
 Windows Memory Mapping
 The Windows calls to manipulate the page table are:

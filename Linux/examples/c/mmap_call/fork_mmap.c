@@ -9,7 +9,7 @@
 // https://stackoverflow.com/questions/19672778/trying-to-write-to-an-int-in-shared-memory-using-mmap-with-a-child-process
 
 int main(void) {
-	int * shared = mmap(NULL, sizeof(int), PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0); 
+	int * shared = mmap(NULL, sizeof(int), PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);
 	pid_t child;
 	int childstate;
 
@@ -22,4 +22,9 @@ int main(void) {
 	}
 	waitpid (child, &childstate, 0);
 	printf("parent's *shared %d\n", *shared);
+
+	if (-1 == munmap(shared, sizeof(int))) {
+		perror("munmap shared failed");
+		printf("munmap shared failed, shared = %p\n", shared);
+	}
 }

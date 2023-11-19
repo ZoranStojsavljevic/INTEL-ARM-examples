@@ -21,23 +21,36 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	if ((fd = open("mmapdemo.c", O_RDONLY)) == -1) {
-		perror("open");
+	if (-1 == (fd = open("mmapdemo.c", O_RDONLY))) {
+		perror("open file failed, fd = -1");
 		exit(1);
 	}
 
-	if (stat("mmapdemo.c", &sbuf) == -1) {
-		perror("stat");
+	if (-1 == stat("mmapdemo.c", &sbuf)) {
+		perror("stat failed");
+		printf("stat failed, &sbuf = %p\n", &sbuf);
 		exit(1);
 	}
 
-	if ((data = mmap((caddr_t)0, sbuf.st_size, PROT_READ, MAP_SHARED, fd, 0)) == (caddr_t)(-1)) {
-		perror("mmap");
+	if ((caddr_t)(-1) == (data = mmap(NULL, sbuf.st_size, PROT_READ, MAP_SHARED, fd, 0))) {
+		perror("mmap from fd to data copying failed");
+		printf("mmap from fd to data copying failed, data = %p\n", data);
+		exit(1);
+	}
+
+	if (-1 == close(fd)) {
+		perror("close file failed");
+		printf("close file failed, fd = %d\n", fd);
 		exit(1);
 	}
 
 	for (int i=0; i < sbuf.st_size; i++)
 		printf("%c", data[i]);
+
+	if (-1 == munmap(data, sbuf.st_size)) {
+		perror("munmap data failed");
+		printf("munmap data failed, data = %p\n", data);
+	}
 
 	return 0;
 }
