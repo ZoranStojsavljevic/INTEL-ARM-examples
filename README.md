@@ -1,4 +1,4 @@
-### INTEL-ARM-miscellaneous-titbits
+### INTEL-ARM-examples
 
 This repository reflects some very interesting tools/miniatures, which the author either
 developed on his own, or did the improvements to some existing, or found some of them
